@@ -42,9 +42,9 @@ class BootstrapJSNode(template.Node):
             tags = []
             for tag in self.args:
                 if tag == 'jquery':
-                    tags += JQUERY_TAG
+                    tags.append(JQUERY_TAG)
                 else:
-                    tags += SCRIPT_TAG % (settings.STATIC_URL, tag)
+                    tags.append(SCRIPT_TAG % (settings.STATIC_URL, tag))
             return '\n'.join(tags)
 
 @register.simple_tag
