@@ -4,7 +4,7 @@ from django.conf import settings
 register = template.Library()
 
 SCRIPT_TAG = '<script src="%sjs/bootstrap-%s.js" type="text/javascript"></script>'
-JQUERY_TAG = '<script src="%sjs/%s.js" type="text/javascript"></script>'
+JQUERY_TAG = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>'
 
 class BootstrapJSNode(template.Node):
 
@@ -13,7 +13,7 @@ class BootstrapJSNode(template.Node):
 
     def render_all_scripts(self):
         results = [
-            JQUERY_TAG % (settings.STATIC_URL, 'jquery'),
+            JQUERY_TAG,
             SCRIPT_TAG % (settings.STATIC_URL, 'alert'),
             SCRIPT_TAG % (settings.STATIC_URL, 'button'),
             SCRIPT_TAG % (settings.STATIC_URL, 'carousel'),
@@ -42,7 +42,7 @@ class BootstrapJSNode(template.Node):
             tags = []
             for tag in self.args:
                 if tag == 'jquery':
-                    tags += JQUERY_TAG % (settings.STATIC_URL, tag)
+                    tags += JQUERY_TAG
                 else:
                     tags += SCRIPT_TAG % (settings.STATIC_URL, tag)
             return '\n'.join(tags)

@@ -17,15 +17,22 @@ This fork
 
 This fork updates the django-bootstrapped project:
 
-* Bootstrap v.2.0.2
+* Bootstrap v2.0.4
 
 * base template called "base_bootstrap.html"
 
+* load template library "bootstraped" instead of "bootstrap"
+
+* includes Less.js v1.3.0
+
+* loads JQquery from CDN
+
+* manages Bootstrap plugins dependencies
 
 Installation
 ============
 
-pip install git+git://github.com/bianchimro/django-bootstrapped.git#egg=django-bootstrapped
+pip install git+git://github.com/pkeeper/django-bootstrapped.git#egg=django-bootstrapped
 
 
 Configuration
@@ -60,6 +67,14 @@ settings.TEMPLATE_DEBUG is set to True::
 Output::
 
     <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+    
+```bootstrap_less```
+
+{% bootstrap_css %} works same as above but uses Less instead of CSS, output:
+
+	<link rel="stylesheet/less" type="text/css" href="/static/lib/bootstrap.less">
+	<script src="/static/js/less.js" type="text/javascript"></script>
+
 
 ```bootstrap_js```
 
